@@ -1,12 +1,5 @@
 # 📅 AI Medical Assistant Chatbot — RAG-based Application
 
-![Medical Assistant Thumbnail](./assets/medicalAssistant.png)
-
-> 🎥 **Watch the full project walkthrough:** [YouTube Video](https://youtu.be/BOhKnkrr4Yc)
->
-> 🗂️ **Architecture PDF:** [View Architecture](./assets/MedicalAssistant.pdf)
-
----
 
 ## 🧠 Project Overview
 
@@ -33,9 +26,6 @@ Retrieved Docs
    ↓
 LLM-generated Answer
 ```
-
-For a detailed view, refer to the **[MedicalAssistant.pdf](./assets/MedicalAssistant.pdf)**
-
 ---
 
 ## 📚 Features
@@ -60,92 +50,11 @@ For a detailed view, refer to the **[MedicalAssistant.pdf](./assets/MedicalAssis
 | Backend    | FastAPI                    |
 | Deployment | Render                     |
 
----
-
-## 📚 API Endpoints
-
-```http
-POST /upload_pdfs/ --- Upload one or more PDF files
-
-POST /ask/ --- Ask a question --- Form field: `question`
-
-```
-
----
-
-## 📁 Folder Structure
-
-```
-└── 📁assets
-    ├── DIABETES.pdf
-    ├── MedicalAssistant.pdf
-    └── medicalAssistant.png
-```
-
-```
-└── 📁client
-    └── 📁__pycache__
-        ├── config.cpython-311.pyc
-    └── 📁components
-        └── 📁__pycache__
-            ├── chatUI.cpython-311.pyc
-            ├── history_download.cpython-311.pyc
-            ├── upload.cpython-311.pyc
-        ├── chatUI.py
-        ├── history_download.py
-        ├── upload.py
-    └── 📁utils
-        └── 📁__pycache__
-            ├── api.cpython-311.pyc
-        ├── api.py
-    ├── app.py
-    ├── config.py
-    └── requirements.txt
-```
-
-```
-└── 📁server
-    └── 📁__pycache__
-        ├── logger.cpython-311.pyc
-        ├── main.cpython-311.pyc
-        ├── test.cpython-311.pyc
-    └── 📁middlewares
-        └── 📁__pycache__
-            ├── exception_handlers.cpython-311.pyc
-        ├── exception_handlers.py
-    └── 📁modules
-        └── 📁__pycache__
-            ├── llm.cpython-311.pyc
-            ├── load_vectorstore.cpython-311.pyc
-            ├── query_handlers.cpython-311.pyc
-        ├── llm.py
-        ├── load_vectorstore.py
-        ├── pdf_handlers.py
-        ├── query_handlers.py
-    └── 📁routes
-        └── 📁__pycache__
-            ├── ask_question.cpython-311.pyc
-            ├── upload_pdfs.cpython-311.pyc
-        ├── ask_question.py
-        ├── upload_pdfs.py
-    └── 📁uploaded_docs
-        ├── DIABETES.pdf
-        ├── Supratim Nag - LOR.pdf
-    ├── .env
-    ├── logger.py
-    ├── main.py
-    ├── requirements.txt
-    └── test.py
-```
-
----
-
 ## ⚡ Quick Setup
 
 ```bash
 # Clone the repo
-$ git clone https://github.com/snsupratim/medicalAssistant.git
-$ cd medicalAssistant/server
+$ cd medicalAssistant/Backend
 
 # Create virtual env
 $ uv venv
@@ -163,7 +72,7 @@ PINECONE_API_KEY=...
 $ uvicorn main:app --reload --port 8000
 
 
-$ cd medicalAssistant/client
+$ cd medicalAssistant/Frontend
 
 # Create virtual env
 $ uv venv
@@ -175,27 +84,3 @@ $ uv pip install -r requirements.txt
 # Run the server
 $ streamlit run app.py
 ```
-
----
-
-## 🌐 Deployment
-
-- Hosted on [Render](https://render.com)
-- Configure `start command` as:
-
-  ```bash
-  uvicorn main:app --host 0.0.0.0 --port 10000
-  ```
-
----
-
-## 🌟 Credits
-
-- Built by Supratim Nag
-- Inspired by LangChain, Groq, Pinecone, and FastAPI ecosystems
-
----
-
-## 🎉 License
-
-This project is licensed under the MIT License.
