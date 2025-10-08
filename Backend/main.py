@@ -1,30 +1,30 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from middlewares.exception_handlers import catch_exception_middleware
-app = FastAPI(
-    title="Medical Assistant",
-    description="API For AI Medical Assistant Chatbot"
-)
+from routes.upload_pdfs import router as upload_router
+from routes.ask_question import router as ask_router
+
+
+
+app=FastAPI(title="Medical Assistant API",description="API for AI Medical Assistant Chatbot")
 
 # CORS Setup
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-    "https://your-frontend-domain.com"
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # List of allowed origins
-    allow_credentials=True,  # Allow cookies and credentials
-    allow_methods=["*"],     # Allow all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],     # Allow all headers
+    allow_origins=["*"],
+    allow_credentials=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
+
+
 
 # middleware exception handlers
 app.middleware("http")(catch_exception_middleware)
+
 # routers
 
-# 1, upload pdfs
-
-#2 asking query
+# 1. upload pdfs documents
+app.include_router(upload_router)
+# 2. asking query
+app.include_router(ask_router)
